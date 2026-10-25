@@ -1043,3 +1043,261 @@ footer p {
         font-size: 1.3rem;
     }
 }
+
+/* ==================== RESPONSIVE HP (TAMBAHAN) ==================== */
+
+/* Cegah halaman bisa digeser ke samping */
+html, body {
+    overflow-x: hidden;
+    -webkit-text-size-adjust: 100%;
+}
+
+img, svg {
+    max-width: 100%;
+}
+
+/* Grid yang tadinya minimal 250-300px bisa melebihi layar HP kecil.
+   min(..., 100%) membuatnya mengecil mengikuti lebar layar. */
+.game-controls {
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+}
+
+.formula-grid {
+    grid-template-columns: repeat(auto-fit, minmax(min(280px, 100%), 1fr));
+}
+
+.dashboard-cards {
+    grid-template-columns: repeat(auto-fit, minmax(min(250px, 100%), 1fr));
+}
+
+.stats-grid-dash {
+    grid-template-columns: repeat(auto-fit, minmax(min(200px, 100%), 1fr));
+}
+
+/* ---------- Tablet & HP (maks 768px) ---------- */
+@media (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+
+    header {
+        padding: 25px 15px;
+        border-radius: 15px;
+        margin-bottom: 20px;
+    }
+
+    /* Tab menu: satu baris, bisa digeser ke samping */
+    .tabs {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 6px;
+        margin-bottom: 20px;
+    }
+
+    .tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .tab-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 12px 18px;
+        font-size: 0.9rem;
+    }
+
+    .content-area {
+        padding: 15px;
+        border-radius: 15px;
+        min-height: auto;
+    }
+
+    .game-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .game-controls {
+        padding: 15px;
+        gap: 20px;
+    }
+
+    .operations,
+    .modes {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .difficulty-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .difficulty-btn {
+        flex: 1;
+        padding: 10px 12px;
+    }
+
+    .question-display {
+        padding: 25px 12px;
+    }
+
+    .question-text {
+        font-size: 1.6rem;
+        text-align: center;
+    }
+
+    /* Kotak skor 2x2 */
+    .game-stats {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .stat-box {
+        padding: 12px;
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .game-buttons {
+        flex-direction: column;
+    }
+
+    .start-btn, .reset-btn, .hint-btn, .skip-btn {
+        width: 100%;
+        padding: 14px;
+        font-size: 1rem;
+    }
+
+    .feedback-message {
+        font-size: 1rem;
+    }
+
+    .formula-tabs {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+    }
+
+    .formula-tabs::-webkit-scrollbar {
+        display: none;
+    }
+
+    .formula-tab-btn {
+        flex: 0 0 auto;
+        white-space: nowrap;
+    }
+
+    .formula-box {
+        font-size: 0.95rem;
+        overflow-x: auto;
+    }
+
+    .dash-card {
+        padding: 15px;
+        gap: 15px;
+    }
+
+    .dash-icon {
+        font-size: 2rem;
+    }
+
+    .about-section {
+        padding: 18px;
+    }
+
+    #activity-log-list li {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+
+    footer {
+        padding: 20px 10px;
+    }
+}
+
+/* ---------- HP kecil (maks 480px) ---------- */
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.3rem;
+    }
+
+    .subtitle {
+        font-size: 0.85rem;
+    }
+
+    .tab-btn {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+    }
+
+    .operations,
+    .modes {
+        grid-template-columns: 1fr;
+    }
+
+    .question-text {
+        font-size: 1.3rem;
+    }
+
+    .geo-question-text {
+        font-size: 1.2rem;
+    }
+
+    .geo-options {
+        grid-template-columns: 1fr;
+    }
+
+    .geo-option-btn {
+        padding: 13px 15px;
+        font-size: 1rem;
+    }
+
+    .stat-label {
+        font-size: 0.8rem;
+    }
+
+    .stat-value {
+        font-size: 1.3rem;
+    }
+
+    .element-badge {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .footer-links {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .separator {
+        display: none;
+    }
+}
+
+/* Layar sentuh: tombol lebih mudah ditekan, dan input tidak
+   memicu zoom otomatis di iPhone (font minimal 16px) */
+@media (hover: none) and (pointer: coarse) {
+    .input-area input {
+        font-size: 16px;
+        min-height: 48px;
+    }
+
+    .tab-btn,
+    .difficulty-btn,
+    .formula-tab-btn,
+    .geo-option-btn {
+        min-height: 44px;
+    }
+
+    /* Hilangkan efek hover yang "menempel" di layar sentuh */
+    .tab-btn:hover,
+    .formula-card:hover,
+    .geo-option-btn:hover:not(:disabled) {
+        transform: none;
+    }
+}
