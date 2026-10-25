@@ -1,0 +1,1045 @@
+/* ==================== GLOBAL STYLES ==================== */
+:root {
+    --primary-color: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary-color: #8b5cf6;
+    --success-color: #22c55e;
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
+    --background-light: #f8fafc;
+    --background-dark: #0f172a;
+    --card-light: #ffffff;
+    --card-dark: #1e293b;
+    --text-light: #1e293b;
+    --text-dark: #f1f5f9;
+    --border-light: #e2e8f0;
+    --border-dark: #334155;
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.3);
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --gradient-success: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    --gradient-error: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    --transition: all 0.3s ease;
+}
+
+[data-theme="dark"] {
+    --background: var(--background-dark);
+    --card: var(--card-dark);
+    --text: var(--text-dark);
+    --border: var(--border-dark);
+    --shadow: var(--shadow-dark);
+}
+
+[data-theme="light"] {
+    --background: var(--background-light);
+    --card: var(--card-light);
+    --text: var(--text-light);
+    --border: var(--border-light);
+    --shadow: var(--shadow-light);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    transition: var(--transition);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* ==================== HEADER ==================== */
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--gradient-primary);
+    border-radius: 20px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 40px var(--shadow);
+}
+
+header h1 {
+    color: white;
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+header h1 i {
+    margin-right: 10px;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/* ==================== NAVIGATION TABS ==================== */
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 15px 30px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    background: var(--card);
+    color: var(--text);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 2px 10px var(--shadow);
+}
+
+.tab-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px var(--shadow);
+}
+
+.tab-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+    transform: translateY(-2px);
+}
+
+/* ==================== CONTENT AREA ==================== */
+.content-area {
+    background: var(--card);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 40px var(--shadow);
+    min-height: 600px;
+}
+
+.game-section {
+    display: none;
+    animation: fadeIn 0.5s ease;
+}
+
+.game-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ==================== GAME HEADER ==================== */
+.game-header {
+    text-align: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border);
+}
+
+.game-header h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.game-header h2 i {
+    margin-right: 10px;
+}
+
+.game-description {
+    color: var(--text);
+    opacity: 0.8;
+    font-size: 1rem;
+}
+
+/* ==================== GAME CONTROLS ==================== */
+.game-controls {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: var(--background);
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.game-controls h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+/* Operations & Modes */
+.operations, .modes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 10px;
+}
+
+.operation-option, .mode-option, .category-option {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.operation-option input, .mode-option input, .category-option input {
+    display: none;
+}
+
+.operation-option span, .mode-option span {
+    padding: 10px 15px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+    transition: var(--transition);
+    font-size: 0.95rem;
+}
+
+.operation-option input:checked + span, .mode-option input:checked + span {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.operation-option span:hover, .mode-option span:hover {
+    border-color: var(--primary-color);
+    transform: scale(1.02);
+}
+
+/* Difficulty */
+.difficulty-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.difficulty-btn {
+    padding: 10px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: 2px solid var(--border);
+    background: var(--card);
+    color: var(--text);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.difficulty-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.difficulty-btn:hover {
+    border-color: var(--primary-color);
+}
+
+/* Categories */
+.categories {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.category-option span {
+    padding: 8px 15px;
+    background: var(--card);
+    border: 2px solid var(--border);
+    border-radius: 8px;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.category-option input:checked + span {
+    background: var(--gradient-success);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.category-option span:hover {
+    border-color: var(--success-color);
+}
+
+/* ==================== GAME AREA ==================== */
+.game-area {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.question-display {
+    text-align: center;
+    padding: 40px 20px;
+    background: var(--background);
+    border-radius: 15px;
+    border: 2px solid var(--border);
+}
+
+.question-text {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 30px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.input-area {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.input-area input {
+    padding: 15px 25px;
+    font-size: 1.2rem;
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    background: var(--card);
+    color: var(--text);
+    width: 250px;
+    transition: var(--transition);
+    text-align: center;
+}
+
+.input-area input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+.input-area button {
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.input-area button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
+}
+
+.input-area button:active {
+    transform: translateY(0);
+}
+
+/* ==================== GAME STATS ==================== */
+.game-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
+
+.stat-box {
+    text-align: center;
+    padding: 20px;
+    background: var(--background);
+    border-radius: 12px;
+    border: 1px solid var(--border);
+}
+
+.stat-label {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+/* ==================== GAME BUTTONS ==================== */
+.game-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.start-btn, .reset-btn, .hint-btn, .skip-btn {
+    padding: 15px 30px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.start-btn {
+    background: var(--gradient-success);
+    color: white;
+}
+
+.start-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(34, 197, 94, 0.4);
+}
+
+.reset-btn {
+    background: var(--gradient-error);
+    color: white;
+}
+
+.reset-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(239, 68, 68, 0.4);
+}
+
+.hint-btn {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    color: white;
+}
+
+.hint-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(245, 158, 11, 0.4);
+}
+
+.skip-btn {
+    background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+    color: white;
+}
+
+.skip-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(100, 116, 139, 0.4);
+}
+
+/* ==================== FEEDBACK AREA ==================== */
+.feedback-area {
+    text-align: center;
+    padding: 20px;
+}
+
+.feedback-message {
+    font-size: 1.2rem;
+    font-weight: 600;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    transition: var(--transition);
+}
+
+.feedback-message.correct {
+    background: rgba(34, 197, 94, 0.2);
+    color: var(--success-color);
+    border: 1px solid var(--success-color);
+}
+
+.feedback-message.wrong {
+    background: rgba(239, 68, 68, 0.2);
+    color: var(--error-color);
+    border: 1px solid var(--error-color);
+}
+
+.feedback-message.info {
+    background: rgba(99, 102, 241, 0.2);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+}
+
+.hint-message {
+    font-size: 1rem;
+    color: var(--warning-color);
+    font-style: italic;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.hint-message.show {
+    opacity: 1;
+}
+
+/* ==================== PERIODIC TABLE PREVIEW ==================== */
+.periodic-table-preview {
+    margin-top: 30px;
+    padding: 20px;
+    background: var(--background);
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.periodic-table-preview h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.elements-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.element-badge {
+    padding: 8px 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.element-badge:hover {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+/* ==================== ABOUT SECTION ==================== */
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.about-content h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    font-size: 2rem;
+}
+
+.about-content h2 i {
+    margin-right: 10px;
+}
+
+.about-section {
+    background: var(--background);
+    padding: 25px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.about-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.3rem;
+}
+
+.about-section p {
+    color: var(--text);
+    margin-bottom: 15px;
+}
+
+.about-section ul, .about-section ol {
+    margin-left: 25px;
+    color: var(--text);
+}
+
+.about-section li {
+    margin-bottom: 8px;
+}
+
+.credit {
+    text-align: center;
+    padding: 30px;
+    margin-top: 30px;
+    background: var(--gradient-primary);
+    border-radius: 15px;
+    color: white;
+    font-size: 1.1rem;
+}
+
+.credit i {
+    margin-right: 10px;
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 40px;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+footer p {
+    margin-bottom: 10px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-links a:hover {
+    color: var(--secondary-color);
+    text-decoration: underline;
+}
+
+.separator {
+    color: var(--border);
+}
+
+/* ==================== DASHBOARD & PROGRESS ==================== */
+.dashboard-content {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.dash-card {
+    background: var(--background);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dash-icon {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.dash-info h3 {
+    font-size: 0.95rem;
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: 5px;
+}
+
+.dash-info p {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.dashboard-section {
+    background: var(--background);
+    padding: 25px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.dashboard-section h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.2rem;
+}
+
+.stats-grid-dash {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.stat-card-dash {
+    background: var(--card);
+    padding: 15px;
+    border-radius: 10px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.stat-card-dash h4 {
+    margin-bottom: 8px;
+    color: var(--text);
+}
+
+.stat-card-dash p {
+    font-size: 0.9rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+.activity-log-container {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+#activity-log-list {
+    list-style: none;
+}
+
+#activity-log-list li {
+    padding: 10px 15px;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#activity-log-list li.no-activity {
+    justify-content: center;
+    color: var(--text);
+    opacity: 0.6;
+}
+
+/* ==================== FORMULAS MENU ==================== */
+.formulas-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.formula-tabs {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+}
+
+.formula-tab-btn {
+    padding: 10px 20px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    background: var(--background);
+    border: 1px solid var(--border);
+    color: var(--text);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.formula-tab-btn.active {
+    background: var(--gradient-primary);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.formula-category-content {
+    display: none;
+}
+
+.formula-category-content.active {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+.formula-category-content h3 {
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.formula-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.formula-card {
+    background: var(--background);
+    padding: 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: var(--transition);
+}
+
+.formula-card:hover {
+    transform: translateY(-3px);
+    border-color: var(--primary-color);
+}
+
+.formula-card h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.formula-box {
+    background: var(--card);
+    padding: 12px;
+    border-radius: 8px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    text-align: center;
+    margin-bottom: 10px;
+    border: 1px dashed var(--primary-color);
+}
+
+.formula-card p {
+    font-size: 0.85rem;
+    color: var(--text);
+    opacity: 0.8;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.95rem;
+    }
+
+    .tab-btn {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+
+    .content-area {
+        padding: 20px;
+    }
+
+    .game-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .question-text {
+        font-size: 1.8rem;
+    }
+
+    .input-area input {
+        width: 200px;
+        font-size: 1rem;
+    }
+
+    .game-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-value {
+        font-size: 1.5rem;
+    }
+
+    .operations {
+        grid-template-columns: 1fr;
+    }
+
+    .difficulty-buttons {
+        flex-direction: column;
+    }
+
+    .game-buttons {
+        flex-direction: column;
+    }
+
+    .start-btn, .reset-btn, .hint-btn, .skip-btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 25px 15px;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    .question-text {
+        font-size: 1.5rem;
+    }
+
+    .input-area {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .input-area input {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .input-area button {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* ==================== ANIMATIONS ==================== */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.pulse {
+    animation: pulse 0.5s ease;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-10px);
+    }
+    75% {
+        transform: translateX(10px);
+    }
+}
+
+.shake {
+    animation: shake 0.3s ease;
+}
+
+/* Loading spinner */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* ==================== GEOGRAFI & ASTRONOMI ==================== */
+.geo-question-text {
+    font-size: 1.7rem;
+    line-height: 1.4;
+}
+
+.geo-options {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.geo-option-btn {
+    padding: 15px 20px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    background: var(--card);
+    color: var(--text);
+    border: 2px solid var(--border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.geo-option-btn:hover:not(:disabled) {
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+}
+
+.geo-option-btn:disabled {
+    cursor: not-allowed;
+}
+
+.geo-option-btn.correct {
+    background: var(--gradient-success);
+    color: white;
+    border-color: var(--success-color);
+}
+
+.geo-option-btn.wrong {
+    background: var(--gradient-error);
+    color: white;
+    border-color: var(--error-color);
+}
+
+.geo-option-btn.eliminated {
+    opacity: 0.25;
+    text-decoration: line-through;
+}
+
+.geo-fact {
+    margin-top: 10px;
+    padding: 12px 15px;
+    border-radius: 10px;
+    background: rgba(99, 102, 241, 0.1);
+    border-left: 4px solid var(--primary-color);
+    font-size: 0.95rem;
+    text-align: left;
+    display: none;
+}
+
+.geo-fact.show {
+    display: block;
+    animation: fadeIn 0.4s ease;
+}
+
+@media (max-width: 600px) {
+    .geo-options {
+        grid-template-columns: 1fr;
+    }
+
+    .geo-question-text {
+        font-size: 1.3rem;
+    }
+}

@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Edukasi - Mental Math & Tabel Periodik</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-gamepad"></i> Game Science, Technology, Engineering, and Mathematics</h1>
+            <p class="subtitle">Indonesia Emas 2045</p>
+        </header>
+
+        <nav class="tabs">
+            <button class="tab-btn active" data-tab="math-game">🏆 Mental Math Game</button>
+            <button class="tab-btn" data-tab="periodic-game">🧪 Tebak Tabel Periodik</button>
+            <button class="tab-btn" data-tab="bio-game">🧬 Biologi</button>
+            <button class="tab-btn" data-tab="geo-game">🌍 Geografi & Astronomi</button>
+            <button class="tab-btn" data-tab="dashboard">📊 Progress</button>
+            <button class="tab-btn" data-tab="formulas">📚 Rumus</button>
+            <button class="tab-btn" data-tab="about">ℹ️ Tentang Game</button>
+        </nav>
+
+        <main class="content-area">
+            <!-- Game Mental Math -->
+            <section id="math-game" class="game-section active">
+                <div class="game-header">
+                    <h2><i class="fas fa-brain"></i> Mental Math Challenge</h2>
+                    <p class="game-description">Uji kemampuan matematika mental Anda dengan berbagai jenis operasi</p>
+                </div>
+
+                <div class="game-controls">
+                    <div class="operation-selector">
+                        <h3>Pilih Jenis Operasi:</h3>
+                        <div class="operations">
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="addition" checked>
+                                <span>➕ Pertambahan</span>
+                            </label>
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="subtraction">
+                                <span>➖ Pengurangan</span>
+                            </label>
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="multiplication">
+                                <span>✖️ Perkalian</span>
+                            </label>
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="division">
+                                <span>➗ Pembagian</span>
+                            </label>
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="power2">
+                                <span>² Pangkat 2</span>
+                            </label>
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="power3">
+                                <span>³ Pangkat 3</span>
+                            </label>
+                            <label class="operation-option">
+                                <input type="radio" name="operation" value="square-root">
+                                <span>√ Akar Kuadrat</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="difficulty-selector">
+                        <h3>Tingkat Kesulitan:</h3>
+                        <div class="difficulty-buttons">
+                            <button class="difficulty-btn" data-level="easy">Mudah</button>
+                            <button class="difficulty-btn active" data-level="medium">Sedang</button>
+                            <button class="difficulty-btn" data-level="hard">Sulit</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-area">
+                    <div class="question-display">
+                        <div class="question-text" id="math-question">Klik "Mulai Game" untuk memulai</div>
+                        <div class="input-area">
+                            <input type="number" id="math-answer" placeholder="Masukkan jawaban...">
+                            <button id="submit-answer">Cek Jawaban</button>
+                        </div>
+                    </div>
+
+                    <div class="game-stats">
+                        <div class="stat-box">
+                            <div class="stat-label">Skor</div>
+                            <div class="stat-value" id="score">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Benar</div>
+                            <div class="stat-value" id="correct">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Salah</div>
+                            <div class="stat-value" id="wrong">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Waktu</div>
+                            <div class="stat-value" id="timer">60s</div>
+                        </div>
+                    </div>
+
+                    <div class="game-buttons">
+                        <button id="start-math-game" class="start-btn">🎮 Mulai Game</button>
+                        <button id="reset-math-game" class="reset-btn">🔄 Reset Game</button>
+                        <button id="hint-btn" class="hint-btn">💡 Petunjuk</button>
+                    </div>
+
+                    <div class="feedback-area">
+                        <div id="feedback" class="feedback-message">Selamat datang! Pilih operasi dan mulai game.</div>
+                        <div id="hint-text" class="hint-message"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Game Tebak Tabel Periodik -->
+            <section id="periodic-game" class="game-section">
+                <div class="game-header">
+                    <h2><i class="fas fa-atom"></i> Tebak Tabel Periodik</h2>
+                    <p class="game-description">Tebak nama elemen berdasarkan simbol atau sebaliknya</p>
+                </div>
+
+                <div class="game-controls">
+                    <div class="mode-selector">
+                        <h3>Mode Permainan:</h3>
+                        <div class="modes">
+                            <label class="mode-option">
+                                <input type="radio" name="mode" value="symbol-to-name" checked>
+                                <span>Simbol → Nama</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="mode" value="name-to-symbol">
+                                <span>Nama → Simbol</span>
+                            </label>
+                            <label class="mode-option">
+                                <input type="radio" name="mode" value="mixed">
+                                <span>Campuran</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="category-selector">
+                        <h3>Kategori Elemen:</h3>
+                        <div class="categories">
+                            <label class="category-option">
+                                <input type="checkbox" name="category" value="common" checked>
+                                <span>Umum</span>
+                            </label>
+                            <label class="category-option">
+                                <input type="checkbox" name="category" value="alkali">
+                                <span>Logam Alkali</span>
+                            </label>
+                            <label class="category-option">
+                                <input type="checkbox" name="category" value="noble">
+                                <span>Gas Mulia</span>
+                            </label>
+                            <label class="category-option">
+                                <input type="checkbox" name="category" value="transition">
+                                <span>Logam Transisi</span>
+                            </label>
+                            <label class="category-option">
+                                <input type="checkbox" name="category" value="all">
+                                <span>Semua</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="game-area">
+                    <div class="question-display">
+                        <div class="question-text" id="periodic-question">Pilih mode dan kategori, lalu mulai game</div>
+                        <div class="input-area">
+                            <input type="text" id="periodic-answer" placeholder="Masukkan jawaban...">
+                            <button id="submit-periodic-answer">Cek Jawaban</button>
+                        </div>
+                    </div>
+
+                    <div class="game-stats">
+                        <div class="stat-box">
+                            <div class="stat-label">Skor</div>
+                            <div class="stat-value" id="periodic-score">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Benar</div>
+                            <div class="stat-value" id="periodic-correct">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Salah</div>
+                            <div class="stat-value" id="periodic-wrong">0</div>
+                        </div>
+                        <div class="stat-box">
+                            <div class="stat-label">Tersisa</div>
+                            <div class="stat-value" id="remaining">10</div>
+                        </div>
+                    </div>
+
+                    <div class="game-buttons">
+                        <button id="start-periodic-game" class="start-btn">🎮 Mulai Game</button>
+                        <button id="reset-periodic-game" class="reset-btn">🔄 Reset Game</button>
+                        <button id="periodic-hint-btn" class="hint-btn">💡 Petunjuk</button>
+                        <button id="skip-btn" class="skip-btn">⏭️ Lewati</button>
+                    </div>
+
+                    <div class="feedback-area">
+                        <div id="periodic-feedback" class="feedback-message">Pilih mode dan kategori untuk memulai.</div>
+                        <div id="periodic-hint-text" class="hint-message"></div>
+                    </div>
+
+                    <div class="periodic-table-preview">
+                        <h3>Daftar Elemen Umum:</h3>
+                        <div class="elements-list" id="elements-list">
+                            <!-- Akan diisi oleh JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+<!-- Game Geografi & Astronomi -->
+<section id="geo-game" class="game-section">
+    <div class="game-header">
+        <h2><i class="fas fa-earth-asia"></i> Geografi & Astronomi</h2>
+        <p class="game-description">Jelajahi bumi dan antariksa lewat kuis pilihan ganda</p>
+    </div>
+
+    <div class="game-controls">
+        <div class="mode-selector">
+            <h3>Pilih Kategori:</h3>
+            <div class="modes">
+                <label class="mode-option">
+                    <input type="radio" name="geo-category" value="mixed" checked>
+                    <span>🌌 Campuran</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="geo-category" value="geografi">
+                    <span>🌍 Geografi</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="geo-category" value="astronomi">
+                    <span>🪐 Astronomi</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-area">
+        <div class="question-display">
+            <div class="question-text geo-question-text" id="geo-question">Klik "Mulai Game" untuk memulai</div>
+            <div class="geo-options" id="geo-options"></div>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-box">
+                <div class="stat-label">Skor</div>
+                <div class="stat-value" id="geo-score">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Benar</div>
+                <div class="stat-value" id="geo-correct">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Salah</div>
+                <div class="stat-value" id="geo-wrong">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Tersisa</div>
+                <div class="stat-value" id="geo-remaining">10</div>
+            </div>
+        </div>
+
+        <div class="game-buttons">
+            <button id="start-geo-game" class="start-btn">🎮 Mulai Game</button>
+            <button id="reset-geo-game" class="reset-btn">🔄 Reset Game</button>
+            <button id="geo-hint-btn" class="hint-btn">💡 Petunjuk</button>
+        </div>
+
+        <div class="feedback-area">
+            <div id="geo-feedback" class="feedback-message">Pilih kategori lalu mulai game.</div>
+            <div id="geo-hint-text" class="hint-message"></div>
+            <div id="geo-fact" class="geo-fact"></div>
+        </div>
+    </div>
+</section>
+            
+<!-- Game Biologi -->
+<section id="bio-game" class="game-section">
+    <div class="game-header">
+        <h2><i class="fas fa-dna"></i> Biologi</h2>
+        <p class="game-description">Uji pengetahuan Anda tentang makhluk hidup lewat kuis pilihan ganda</p>
+    </div>
+
+    <div class="game-controls">
+        <div class="mode-selector">
+            <h3>Pilih Kategori:</h3>
+            <div class="modes">
+                <label class="mode-option">
+                    <input type="radio" name="bio-category" value="mixed" checked>
+                    <span>🔬 Campuran</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="bio-category" value="manusia">
+                    <span>🫀 Tubuh Manusia</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="bio-category" value="makhluk">
+                    <span>🌿 Tumbuhan & Hewan</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="bio-category" value="sel">
+                    <span>🧫 Sel & Genetika</span>
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <div class="game-area">
+        <div class="question-display">
+            <div class="question-text geo-question-text" id="bio-question">Klik "Mulai Game" untuk memulai</div>
+            <div class="geo-options" id="bio-options"></div>
+        </div>
+
+        <div class="game-stats">
+            <div class="stat-box"><div class="stat-label">Skor</div><div class="stat-value" id="bio-score">0</div></div>
+            <div class="stat-box"><div class="stat-label">Benar</div><div class="stat-value" id="bio-correct">0</div></div>
+            <div class="stat-box"><div class="stat-label">Salah</div><div class="stat-value" id="bio-wrong">0</div></div>
+            <div class="stat-box"><div class="stat-label">Tersisa</div><div class="stat-value" id="bio-remaining">10</div></div>
+        </div>
+
+        <div class="game-buttons">
+            <button id="start-bio-game" class="start-btn">🎮 Mulai Game</button>
+            <button id="reset-bio-game" class="reset-btn">🔄 Reset Game</button>
+            <button id="bio-hint-btn" class="hint-btn">💡 Petunjuk</button>
+        </div>
+
+        <div class="feedback-area">
+            <div id="bio-feedback" class="feedback-message">Pilih kategori lalu mulai game.</div>
+            <div id="bio-hint-text" class="hint-message"></div>
+            <div id="bio-fact" class="geo-fact"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Dashboard Progress -->
+            <section id="dashboard" class="game-section">
+                <div class="game-header">
+                    <h2><i class="fas fa-chart-line"></i> Dashboard Progress & Aktivitas Hari Ini</h2>
+                    <p class="game-description">Pantau riwayat permainan, statistik harian, dan pencapaian Anda</p>
+                </div>
+
+                <div class="dashboard-content">
+                    <div class="dashboard-cards">
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-calendar-day"></i></div>
+                            <div class="dash-info">
+                                <h3>Tanggal Hari Ini</h3>
+                                <p id="current-date">-</p>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-gamepad"></i></div>
+                            <div class="dash-info">
+                                <h3>Game Dimainkan Hari Ini</h3>
+                                <p id="today-games-count">0 Sesi</p>
+                            </div>
+                        </div>
+                        <div class="dash-card">
+                            <div class="dash-icon"><i class="fas fa-trophy"></i></div>
+                            <div class="dash-info">
+                                <h3>Total Skor Kumulatif</h3>
+                                <p id="total-cumulative-score">0 Poin</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>📈 Statistik Permainan</h3>
+                        <div class="stats-grid-dash">
+                            <div class="stat-card-dash">
+                                <h4>Mental Math</h4>
+                                <p>Total Skor: <span id="dash-math-score">0</span></p>
+                                <p>Benar / Salah: <span id="dash-math-ratio">0 / 0</span></p>
+                            </div>
+                            <div class="stat-card-dash">
+                                <h4>Tabel Periodik</h4>
+                                <p>Total Skor: <span id="dash-periodic-score">0</span></p>
+                                <p>Benar / Salah: <span id="dash-periodic-ratio">0 / 0</span></p>
+                            </div>
+                            <div class="stat-card-dash">
+                                <h4>Geografi & Astronomi</h4>
+                                <p>Total Skor: <span id="dash-geo-score">0</span></p>
+                                <p>Benar / Salah: <span id="dash-geo-ratio">0 / 0</span></p>
+                            </div>
+                            <div class="stat-card-dash">
+                                <h4>Biologi</h4>
+                                <p>Total Skor: <span id="dash-bio-score">0</span></p>
+                                <p>Benar / Salah: <span id="dash-bio-ratio">0 / 0</span></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-section">
+                        <h3>📋 Riwayat Aktivitas Hari Ini</h3>
+                        <div class="activity-log-container">
+                            <ul id="activity-log-list">
+                                <li class="no-activity">Belum ada aktivitas hari ini. Mulai bermain sekarang!</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Menu Full Rumus -->
+            <section id="formulas" class="game-section">
+                <div class="game-header">
+                    <h2><i class="fas fa-book-open"></i> Kamus Lengkap Rumus Sains & Matematika</h2>
+                    <p class="game-description">Kumpulan rumus penting untuk Matematika, Fisika, Kimia, dan Biologi</p>
+                </div>
+
+                <div class="formulas-container">
+                    <div class="formula-tabs">
+                        <button class="formula-tab-btn active" data-category="math">Matematika</button>
+                        <button class="formula-tab-btn" data-category="physics">Fisika</button>
+                        <button class="formula-tab-btn" data-category="chemistry">Kimia</button>
+                        <button class="formula-tab-btn" data-category="biology">Biologi</button>
+                    </div>
+
+                    <!-- Kategori Matematika -->
+                    <div class="formula-category-content active" id="formula-math">
+                        <h3>📐 Rumus Matematika</h3>
+                        <div class="formula-grid">
+                            <div class="formula-card">
+                                <h4>Luas Persegi Panjang</h4>
+                                <div class="formula-box">L = p × l</div>
+                                <p>Keterangan: p = panjang, l = lebar</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Luas Segitiga</h4>
+                                <div class="formula-box">L = ½ × a × t</div>
+                                <p>Keterangan: a = alas, t = tinggi</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Luas Lingkaran</h4>
+                                <div class="formula-box">L = π × r²</div>
+                                <p>Keterangan: π = 22/7 atau 3.14, r = jari-jari</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Teorema Pythagoras</h4>
+                                <div class="formula-box">c² = a² + b²</div>
+                                <p>Keterangan: c = sisi miring, a & b = sisi siku-siku</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Volume Kubus</h4>
+                                <div class="formula-box">V = s³</div>
+                                <p>Keterangan: s = panjang rusuk</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Persamaan Linear (Gradien)</h4>
+                                <div class="formula-box">m = (y₂ - y₁) / (x₂ - x₁)</div>
+                                <p>Keterangan: m = kemiringan/gradien garis</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kategori Fisika -->
+                    <div class="formula-category-content" id="formula-physics">
+                        <h3>⚡ Rumus Fisika</h3>
+                        <div class="formula-grid">
+                            <div class="formula-card">
+                                <h4>Kecepatan / Kelajuan</h4>
+                                <div class="formula-box">v = s / t</div>
+                                <p>Keterangan: v = kecepatan (m/s), s = jarak (m), t = waktu (s)</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Hukum Newton II</h4>
+                                <div class="formula-box">F = m × a</div>
+                                <p>Keterangan: F = gaya (N), m = massa (kg), a = percepatan (m/s²)</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Energi Kinetik</h4>
+                                <div class="formula-box">Ek = ½ × m × v²</div>
+                                <p>Keterangan: Ek = energi kinetik (Joule), m = massa, v = kecepatan</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Energi Potensial</h4>
+                                <div class="formula-box">Ep = m × g × h</div>
+                                <p>Keterangan: Ep = energi potensial, m = massa, g = gravitasi, h = ketinggian</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Tekanan (Pressure)</h4>
+                                <div class="formula-box">P = F / A</div>
+                                <p>Keterangan: P = tekanan (N/m²), F = gaya, A = luas permukaan</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Daya Listrik / Ohm</h4>
+                                <div class="formula-box">V = I × R</div>
+                                <p>Keterangan: V = tegangan (Volt), I = arus (Ampere), R = hambatan (Ohm)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kategori Kimia -->
+                    <div class="formula-category-content" id="formula-chemistry">
+                        <h3>🧪 Rumus Kimia</h3>
+                        <div class="formula-grid">
+                            <div class="formula-card">
+                                <h4>Molaritas Larutan</h4>
+                                <div class="formula-box">M = (g / Mr) × (1000 / V)</div>
+                                <p>Keterangan: g = gram zat, Mr = massa molekul relative, V = volume (mL)</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Jumlah Mol</h4>
+                                <div class="formula-box">n = g / Ar (atau Mr)</div>
+                                <p>Keterangan: n = mol, g = massa zat (gram)</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Hukum Gas Ideal</h4>
+                                <div class="formula-box">P × V = n × R × T</div>
+                                <p>Keterangan: P = tekanan, V = volume, n = mol, R = tetapan, T = suhu (Kelvin)</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Kadar Zat (Persen Massa)</h4>
+                                <div class="formula-box">% massa = (massa unsur / massa total) × 100%</div>
+                                <p>Keterangan: Menghitung kemurnian atau kadar dalam campuran</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>pH Larutan Asam Kuat</h4>
+                                <div class="formula-box">[H⁺] = a × M</div>
+                                <p>Keterangan: a = valensi asam (jumlah ion H⁺), M = molaritas</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Kategori Biologi -->
+                    <div class="formula-category-content" id="formula-biology">
+                        <h3>🧬 Rumus & Konsep Biologi</h3>
+                        <div class="formula-grid">
+                            <div class="formula-card">
+                                <h4>Indeks Massa Tubuh (IMT / BMI)</h4>
+                                <div class="formula-box">IMT = BB (kg) / [TB (m)]²</div>
+                                <p>Keterangan: Menilai berat badan ideal berdasarkan tinggi badan</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Pembesaran Mikroskop</h4>
+                                <div class="formula-box">M = M_okuler × M_objektif</div>
+                                <p>Keterangan: Total pembesaran bayangan pada mikroskop cahaya</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Frekuensi Denyut Nadi Maksimal</h4>
+                                <div class="formula-box">Nadi Maks = 220 - Usia</div>
+                                <p>Keterangan: Batas maksimal detak jantung saat berolahraga</p>
+                            </div>
+                            <div class="formula-card">
+                                <h4>Kapasitas Vital Paru-Paru</h4>
+                                <div class="formula-box">KV = UD + UC + UV</div>
+                                <p>Keterangan: Kapasitas udara total setelah inspirasi maksimal</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+            <!-- Tentang Game -->
+            <section id="about" class="game-section">
+                <div class="about-content">
+                    <h2><i class="fas fa-info-circle"></i> Tentang Game Ini</h2>
+                    
+                    <div class="about-section">
+                        <h3>🎯 Tujuan</h3>
+                        <p>Website ini dibuat untuk melatih kemampuan matematika mental dan pengetahuan tentang tabel periodik elemen kimia melalui permainan interaktif yang menyenangkan.</p>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>🧠 Mental Math Game</h3>
+                        <p>Game ini menantang Anda untuk menyelesaikan soal matematika dalam waktu terbatas. Fitur:</p>
+                        <ul>
+                            <li><strong>7 jenis operasi:</strong> Pertambahan, pengurangan, perkalian, pembagian, pangkat 2, pangkat 3, dan akar kuadrat</li>
+                            <li><strong>3 tingkat kesulitan:</strong> Mudah, sedang, dan sulit</li>
+                            <li><strong>Sistem skor:</strong> Dapatkan poin untuk setiap jawaban benar</li>
+                            <li><strong>Fitur petunjuk:</strong> Dapatkan bantuan jika kesulitan</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>🧪 Tebak Tabel Periodik</h3>
+                        <p>Game ini menguji pengetahuan Anda tentang elemen-elemen kimia. Fitur:</p>
+                        <ul>
+                            <li><strong>3 mode permainan:</strong> Tebak nama dari simbol, tebak simbol dari nama, atau campuran</li>
+                            <li><strong>5 kategori elemen:</strong> Elemen umum, logam alkali, gas mulia, logam transisi, atau semua elemen</li>
+                            <li><strong>Daftar elemen referensi:</strong> Tampilkan daftar elemen untuk belajar</li>
+                            <li><strong>Fitur skip:</strong> Lewati soal yang terlalu sulit</li>
+                        </ul>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>🎮 Cara Bermain</h3>
+                        <ol>
+                            <li>Pilih game yang ingin dimainkan dari tab di atas</li>
+                            <li>Atur pengaturan (operasi, kesulitan, mode, kategori) sesuai keinginan</li>
+                            <li>Klik tombol "Mulai Game"</li>
+                            <li>Jawab soal yang muncul secepat dan seakurat mungkin</li>
+                            <li>Gunakan tombol reset untuk memulai ulang game</li>
+                        </ol>
+                    </div>
+
+                    <div class="about-section">
+                        <h3>⚙️ Teknologi</h3>
+                        <p>Website ini dibangun menggunakan:</p>
+                        <ul>
+                            <li><strong>HTML5</strong> untuk struktur</li>
+                            <li><strong>CSS3</strong> untuk styling dan responsif</li>
+                            <li><strong>JavaScript</strong> untuk logika game dan interaksi</li>
+                            <li><strong>Font Awesome</strong> untuk ikon</li>
+                        </ul>
+                    </div>
+
+                    <div class="credit">
+                        <p><i class="fas fa-code"></i> Dibuat dengan ❤️ untuk pembelajaran dan hiburan edukatif</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>© 2026 Game STEM | Dibuat Oleh Rafi Dwi Fathurahman Nur, S.H.</p>
+            <p class="footer-links">
+                <a href="#" id="toggle-dark-mode"><i class="fas fa-moon"></i> Mode Gelap</a>
+                <span class="separator">|</span>
+                <a href="#" id="toggle-sound"><i class="fas fa-volume-up"></i> Suara: ON</a>
+            </p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
